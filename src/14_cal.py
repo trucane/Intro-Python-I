@@ -22,3 +22,40 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+thisMonth = datetime.today().month
+thisYear = datetime.today().year
+
+mon = input("Enter a month number ")
+mon = int(mon)
+
+
+yr = input("Enter a year ")
+yr = int(yr)
+
+cal = calendar.TextCalendar(calendar.SUNDAY)
+
+def newCal(a=mon, b=yr):
+  print(a)
+  return cal.formatmonth(b,a)
+
+
+if len(sys.argv) == 1:
+    print(newCal(mon, yr))
+elif len(sys.argv) == 2:
+    try:
+        int(sys.argv[1])
+        month = int(sys.argv[1])
+        print(newCal(month))
+    except ValueError:
+        print('Please enter a valid month in integer')
+elif len(sys.argv) == 3:
+    try:
+        int(sys.argv[1]) and int(sys.argv[2])
+        month = int(sys.argv[1])
+        year = int(sys.argv[2])
+        print(newCal(month, year))
+    except ValueError:
+        print('Please enter a valid month and year in integer')
+else:
+    print('Plase use the format (cal.py mm yyyy)')
